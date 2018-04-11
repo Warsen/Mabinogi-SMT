@@ -1,12 +1,60 @@
-﻿<Window x:Class="Mabinogi_SMT.MainWindow"
+﻿<Window x:Class="MSMT.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mabinogi_SMT"
+        xmlns:local="clr-namespace:MSMT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Mabinogi Squire Multi Tracker" Foreground="White" Background="DimGray" ResizeMode="CanMinimize" Height="320" Width="460"
+		WindowStartupLocation="Manual" Topmost="{Binding AlwaysOnTop}" StateChanged="Window_StateChanged">
+	<Window.Resources>
+		<Style TargetType="{x:Type CheckBox}">
+			<Setter Property="Foreground" Value="White"/>
+		</Style>
+	</Window.Resources>
+	<Grid Margin="10,10,10,10">
+		<ComboBox x:Name="CharacterComboBox" ItemsSource="{Binding ListOfCharacters}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedCharacter}" SelectedValuePath="Name" IsEditable="True" SelectionChanged="CharacterComboBox_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+		<Button x:Name="AddCharacterButton" Content="Add Character" HorizontalAlignment="Left" Margin="125,0,0,0" VerticalAlignment="Top" Width="90" Height="22" Click="AddCharacterButton_Click"/>
+		<Button x:Name="RemoveCharacterButton" Content="X" HorizontalAlignment="Left" Margin="220,0,0,0" VerticalAlignment="Top" Width="25" Height="22" Click="RemoveCharacterButton_Click"/>
+		<CheckBox x:Name="ConfirmThreeCheckBox" IsChecked="{Binding ConfirmThree}" Content="Confirm Three" HorizontalAlignment="Left" Margin="250,4,0,0" VerticalAlignment="Top"/>
+		<Button x:Name="ResetDayButton" Content="Reset Day" HorizontalAlignment="Left" Margin="351,0,0,0" VerticalAlignment="Top" Width="70" Height="22" Click="ResetDayButton_Click"/>
+		<TextBlock x:Name="KaourLabel" Style="{StaticResource KaourLabelStyle}" HorizontalAlignment="Left" Margin="0,27,0,0" TextWrapping="Wrap" Text="Kaour" VerticalAlignment="Top"/>
+		<TextBlock x:Name="KaourKeywordTextBlock1" Style="{StaticResource KaourKeywordStyle1}" HorizontalAlignment="Left" Margin="134,27,0,0" TextWrapping="Wrap" Text="{Binding KaourKeyword1}" VerticalAlignment="Top"/>
+		<TextBlock x:Name="KaourKeywordTextBlock2" Style="{StaticResource KaourKeywordStyle1}" HorizontalAlignment="Left" Margin="134,43,0,0" TextWrapping="Wrap" Text="{Binding KaourKeyword2}" VerticalAlignment="Top"/>
+		<TextBlock x:Name="KaourKeywordTextBlock3" Style="{StaticResource KaourKeywordStyle1}" HorizontalAlignment="Left" Margin="134,59,0,0" TextWrapping="Wrap" Text="{Binding KaourKeyword3}" VerticalAlignment="Top"/>
+		<Button x:Name="KaourConfirmButton" Style="{StaticResource KeywordConfirmButtonStyle}" HorizontalAlignment="Left" Margin="185,27,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="KaourConfirmButton_Click"/>
+		<Button x:Name="KaourViewChartButton" Content="View&#xa;Chart" HorizontalAlignment="Left" Margin="250,27,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="KaourViewChartButton_Click"/>
+		<TextBlock x:Name="KaourSpecialKeywordTextBlock" Style="{StaticResource KaourKeywordStyle1}" HorizontalAlignment="Left" Margin="317,32,0,0" TextWrapping="Wrap" Text="{Binding KaourSpecialKeyword}" VerticalAlignment="Top"/>
+		<Border x:Name="KaourSpecialAlertBorder" BorderBrush="Gray" BorderThickness="1" CornerRadius="0,5,0,5" HorizontalAlignment="Left" Height="22" Margin="317,53,0,0" VerticalAlignment="Top" Width="29"/>
+		<Button x:Name="KaourSpecialConfirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="351,53,0,0" VerticalAlignment="Top" Width="70" Height="22" Click="KaourSpecialConfirmButton_Click"/>
+		<TextBlock x:Name="ElsieLabel" Style="{StaticResource ElsieLabelStyle}" HorizontalAlignment="Left" Margin="0,80,0,0" TextWrapping="Wrap" Text="Elsie" VerticalAlignment="Top"/>
+		<TextBlock x:Name="ElsieKeywordTextBlock1" Style="{StaticResource ElsieKeywordStyle1}" HorizontalAlignment="Left" Margin="134,80,0,0" TextWrapping="Wrap" Text="{Binding ElsieKeyword1}" VerticalAlignment="Top"/>
+		<TextBlock x:Name="ElsieKeywordTextBlock2" Style="{StaticResource ElsieKeywordStyle1}" HorizontalAlignment="Left" Margin="134,96,0,0" TextWrapping="Wrap" Text="{Binding ElsieKeyword2}" VerticalAlignment="Top"/>
+		<TextBlock x:Name="ElsieKeywordTextBlock3" Style="{StaticResource ElsieKeywordStyle1}" HorizontalAlignment="Left" Margin="134,112,0,0" TextWrapping="Wrap" Text="{Binding ElsieKeyword3}" VerticalAlignment="Top"/>
+		<Button x:Name="ElsieConfirmButton" Style="{StaticResource KeywordConfirmButtonStyle}" HorizontalAlignment="Left" Margin="185,80,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="ElsieConfirmButton_Click"/>
+		<Button x:Name="ElsieViewChartButton" Content="View&#xA;Chart" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="ElsieViewChartButton_Click"/>
+		<TextBlock x:Name="ElsieSpecialKeywordTextBlock" Style="{StaticResource ElsieKeywordStyle1}" HorizontalAlignment="Left" Margin="317,85,0,0" TextWrapping="Wrap" Text="{Binding ElsieSpecialKeyword}" VerticalAlignment="Top"/>
+		<Border x:Name="ElsieSpecialAlertBorder" BorderBrush="Gray" BorderThickness="1" CornerRadius="0,5,0,5" HorizontalAlignment="Left" Height="22" Margin="317,106,0,0" VerticalAlignment="Top" Width="29"/>
+		<Button x:Name="ElsieSpecialConfirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="351,106,0,0" VerticalAlignment="Top" Width="70" Height="22" Click="ElsieSpecialConfirmButton_Click"/>
+		<TextBlock x:Name="DaiLabel" Style="{StaticResource DaiLabelStyle}" HorizontalAlignment="Left" Margin="0,133,0,0" TextWrapping="Wrap" Text="Dai" VerticalAlignment="Top"/>
+		<TextBlock x:Name="DaiKeywordTextBlock1" Style="{StaticResource DaiKeywordStyle1}" HorizontalAlignment="Left" Margin="134,133,0,0" TextWrapping="Wrap" Text="{Binding DaiKeyword1}" VerticalAlignment="Top"/>
+		<TextBlock x:Name="DaiKeywordTextBlock2" Style="{StaticResource DaiKeywordStyle1}" HorizontalAlignment="Left" Margin="134,149,0,0" TextWrapping="Wrap" Text="{Binding DaiKeyword2}" VerticalAlignment="Top"/>
+		<TextBlock x:Name="DaiKeywordTextBlock3" Style="{StaticResource DaiKeywordStyle1}" HorizontalAlignment="Left" Margin="134,165,0,0" TextWrapping="Wrap" Text="{Binding DaiKeyword3}" VerticalAlignment="Top"/>
+		<Button x:Name="DaiConfirmButton" Style="{StaticResource KeywordConfirmButtonStyle}" HorizontalAlignment="Left" Margin="185,133,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="DaiConfirmButton_Click"/>
+		<Button x:Name="DaiViewChartButton" Content="View&#xA;Chart" HorizontalAlignment="Left" Margin="250,133,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="DaiViewChartButton_Click"/>
+		<TextBlock x:Name="DaiSpecialKeywordTextBlock" Style="{StaticResource DaiKeywordStyle1}" HorizontalAlignment="Left" Margin="317,138,0,0" TextWrapping="Wrap" Text="{Binding DaiSpecialKeyword}" VerticalAlignment="Top"/>
+		<Border x:Name="DaiSpecialAlertBorder" BorderBrush="Gray" BorderThickness="1" CornerRadius="0,5,0,5" HorizontalAlignment="Left" Height="22" Margin="317,159,0,0" VerticalAlignment="Top" Width="29"/>
+		<Button x:Name="DaiSpecialConfirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="351,159,0,0" VerticalAlignment="Top" Width="70" Height="22" Click="DaiSpecialConfirmButton_Click"/>
+		<TextBlock x:Name="EirlysLabel" Style="{StaticResource EirlysLabelStyle}" HorizontalAlignment="Left" Margin="0,186,0,0" TextWrapping="Wrap" Text="Eirlys" VerticalAlignment="Top"/>
+		<TextBlock x:Name="EirlysKeywordTextBlock1" Style="{StaticResource EirlysKeywordStyle1}" HorizontalAlignment="Left" Margin="134,186,0,0" TextWrapping="Wrap" Text="{Binding EirlysKeyword1}" VerticalAlignment="Top"/>
+		<TextBlock x:Name="EirlysKeywordTextBlock2" Style="{StaticResource EirlysKeywordStyle1}" HorizontalAlignment="Left" Margin="134,202,0,0" TextWrapping="Wrap" Text="{Binding EirlysKeyword2}" VerticalAlignment="Top"/>
+		<TextBlock x:Name="EirlysKeywordTextBlock3" Style="{StaticResource EirlysKeywordStyle1}" HorizontalAlignment="Left" Margin="134,218,0,0" TextWrapping="Wrap" Text="{Binding EirlysKeyword3}" VerticalAlignment="Top"/>
+		<Button x:Name="EirlysConfirmButton" Style="{StaticResource KeywordConfirmButtonStyle}" HorizontalAlignment="Left" Margin="185,186,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="EirlysConfirmButton_Click"/>
+		<Button x:Name="EirlysViewChartButton" Content="View&#xA;Chart" HorizontalAlignment="Left" Margin="250,186,0,0" VerticalAlignment="Top" Width="60" Height="48" Click="EirlysViewChartButton_Click"/>
+		<TextBlock x:Name="EirlysSpecialKeywordTextBlock" Style="{StaticResource EirlysKeywordStyle1}" HorizontalAlignment="Left" Margin="317,191,0,0" TextWrapping="Wrap" Text="{Binding EirlysSpecialKeyword}" VerticalAlignment="Top"/>
+		<Border x:Name="EirlysSpecialAlertBorder" BorderBrush="Gray" BorderThickness="1" CornerRadius="0,5,0,5" HorizontalAlignment="Left" Height="22" Margin="317,212,0,0" VerticalAlignment="Top" Width="29"/>
+		<Button x:Name="EirlysSpecialConfirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="351,212,0,0" VerticalAlignment="Top" Width="70" Height="22" Click="EirlysSpecialConfirmButton_Click"/>
+		<CheckBox x:Name="AlwaysOnTopCheckBox" IsChecked="{Binding AlwaysOnTop}" Content="Always On Top" HorizontalAlignment="Left" Margin="323,239,0,0" VerticalAlignment="Top"/>
+		<CheckBox x:Name="UseBufferingCheckBox" IsChecked="{Binding UseBuffering}" Content="Buffer Conversations" Unchecked="UseBufferingCheckBox_Unchecked" HorizontalAlignment="Left" Margin="185,239,0,0" VerticalAlignment="Top"/>
+	</Grid>
 </Window>

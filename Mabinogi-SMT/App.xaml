@@ -1,9 +1,102 @@
-﻿<Application x:Class="Mabinogi_SMT.App"
+﻿<Application x:Class="MSMT.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Mabinogi_SMT"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
+             xmlns:local="clr-namespace:MSMT"
+             Startup="Application_Startup" Exit="Application_Exit">
+	<Application.Resources>
+		<Style x:Key="KeywordStyle1" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="KaourLabelStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="LightGray"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="KaourKeywordStyle1" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="LightGray"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="KaourKeywordStyle2" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="Black"/>
+		</Style>
+		<Style x:Key="ElsieLabelStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="LightSteelBlue"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ElsieKeywordStyle1" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="LightSteelBlue"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="ElsieKeywordStyle2" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="Black"/>
+		</Style>
+		<Style x:Key="DaiLabelStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="LightPink"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="DaiKeywordStyle1" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="LightPink"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="DaiKeywordStyle2" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="Black"/>
+		</Style>
+		<Style x:Key="EirlysLabelStyle" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="PaleGoldenrod"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="EirlysKeywordStyle1" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="PaleGoldenrod"/>
+			<Setter Property="Effect">
+				<Setter.Value>
+					<DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="0"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="EirlysKeywordStyle2" TargetType="TextBlock">
+			<Setter Property="Foreground" Value="Black"/>
+		</Style>
+		<Style x:Key="KeywordConfirmButtonStyle" TargetType="{x:Type Button}">
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding ElementName=ConfirmThreeCheckBox, Path=IsChecked}" Value="False">
+					<Setter Property="Content" Value="Confirm&#xA;Once"/>
+				</DataTrigger>
+				<DataTrigger Binding="{Binding ElementName=ConfirmThreeCheckBox, Path=IsChecked}" Value="True">
+					<Setter Property="Content" Value="Confirm&#xA;Thrice"/>
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+	</Application.Resources>
 </Application>
