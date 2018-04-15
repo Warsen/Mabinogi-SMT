@@ -23,9 +23,9 @@ https://wiki.mabinogiworld.com/view/Alban_Knights_Baltane_Special_Unit
 
 ## Screenshots
 
-![Screenshot 1](/screenshot1.png "Screenshot of the main window")
+![Screenshot 1](/screenshot_1.png "Screenshot of the main window")
 
-![Screenshot 2](/screenshot2.png "Screenshot of the view chart window")
+![Screenshot 2](/screenshot_2.png "Screenshot of the view chart window")
 
 ## Getting Started
 
