@@ -175,17 +175,17 @@ namespace MSMT
 			EirlysSequence = 0;
 			EirlysSpecialSequence = 0;
 		}
-		public Character(string name, Character character)
+		public Character(string name, Character copyFromCharacter)
 		{
 			Name = name;
-			KaourSequence = character.KaourSequence;
-			KaourSpecialSequence = character.KaourSpecialSequence;
-			ElsieSequence = character.ElsieSequence;
-			ElsieSpecialSequence = character.ElsieSpecialSequence;
-			DaiSequence = character.DaiSequence;
-			DaiSpecialSequence = character.DaiSpecialSequence;
-			EirlysSequence = character.EirlysSequence;
-			EirlysSpecialSequence = character.EirlysSpecialSequence;
+			KaourSequence = copyFromCharacter.KaourSequence;
+			KaourSpecialSequence = copyFromCharacter.KaourSpecialSequence;
+			ElsieSequence = copyFromCharacter.ElsieSequence;
+			ElsieSpecialSequence = copyFromCharacter.ElsieSpecialSequence;
+			DaiSequence = copyFromCharacter.DaiSequence;
+			DaiSpecialSequence = copyFromCharacter.DaiSpecialSequence;
+			EirlysSequence = copyFromCharacter.EirlysSequence;
+			EirlysSpecialSequence = copyFromCharacter.EirlysSpecialSequence;
 		}
 	}
 }

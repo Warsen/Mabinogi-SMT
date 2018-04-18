@@ -77,7 +77,7 @@ namespace MSMT
 			if (!String.IsNullOrWhiteSpace(CharacterComboBox.Text) && !String.Equals(CharacterComboBox.Text, _userConfiguration.SelectedCharacter.Name, StringComparison.OrdinalIgnoreCase))
 			{
 				if (String.IsNullOrWhiteSpace(_userConfiguration.SelectedCharacter.Name))
-					_userConfiguration.NewCopyCharacter(CharacterComboBox.Text);
+					_userConfiguration.NewCopyCharacter(CharacterComboBox.Text, _userConfiguration.SelectedCharacter);
 				else
 					_userConfiguration.NewCharacter(CharacterComboBox.Text);
 			}

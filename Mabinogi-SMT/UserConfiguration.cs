@@ -462,32 +462,13 @@ namespace MSMT
 
 			if (!_listOfCharacters.Exists((x) => x.Name == name))
 			{
-				Flush();
-				_selectedCharacter = new Character(name);
+				SelectedCharacter = new Character(name);
 				_listOfCharacters.Add(_selectedCharacter);
-				OnPropertyChanged("SelectedCharacter");
 				OnPropertyChanged("ListOfCharacters");
-				OnPropertyChanged("KaourKeyword1");
-				OnPropertyChanged("KaourKeyword2");
-				OnPropertyChanged("KaourKeyword3");
-				OnPropertyChanged("KaourSpecialKeyword");
-				OnPropertyChanged("ElsieKeyword1");
-				OnPropertyChanged("ElsieKeyword2");
-				OnPropertyChanged("ElsieKeyword3");
-				OnPropertyChanged("ElsieSpecialKeyword");
-				OnPropertyChanged("DaiKeyword1");
-				OnPropertyChanged("DaiKeyword2");
-				OnPropertyChanged("DaiKeyword3");
-				OnPropertyChanged("DaiSpecialKeyword");
-				OnPropertyChanged("EirlysKeyword1");
-				OnPropertyChanged("EirlysKeyword2");
-				OnPropertyChanged("EirlysKeyword3");
-				OnPropertyChanged("EirlysSpecialKeyword");
-				OnPropertyChanged("SelectedCharacterSquireSequence");
 			}
 		}
 
-		public void NewCopyCharacter(string name)
+		public void NewCopyCharacter(string name, Character copyFromCharacter)
 		{
 			if (name == null)
 				throw new ArgumentNullException();
@@ -496,12 +477,9 @@ namespace MSMT
 
 			if (!_listOfCharacters.Exists((x) => x.Name == name))
 			{
-				Flush();
-				_selectedCharacter = new Character(name, _selectedCharacter);
+				SelectedCharacter = new Character(name, copyFromCharacter);
 				_listOfCharacters.Add(_selectedCharacter);
-				OnPropertyChanged("SelectedCharacter");
 				OnPropertyChanged("ListOfCharacters");
-				OnPropertyChanged("SelectedCharacterSquireSequence");
 			}
 		}
 
@@ -510,10 +488,8 @@ namespace MSMT
 			if (_listOfCharacters.Count > 1)
 			{
 				_listOfCharacters.Remove(_selectedCharacter);
-				_selectedCharacter = _listOfCharacters[0];
-				OnPropertyChanged("SelectedCharacter");
+				SelectedCharacter = _listOfCharacters[0];
 				OnPropertyChanged("ListOfCharacters");
-				OnPropertyChanged("SelectedCharacterSquireSequence");
 			}
 		}
 
