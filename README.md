@@ -32,50 +32,50 @@ https://wiki.mabinogiworld.com/view/Alban_Knights_Baltane_Special_Unit
 **In order to effectively use this tool, you will need to have already
 figured out what position you are at in your conversations with Kaour,
 Elsie, Dai, and Eirlys. A player who has not attempted conversations with
-them will start at &#35;1.**
+them will start at &#35;1 for each.**
 
 Enter your character's name into the drop-down list at the upper left corner
-of the main window, then click the *Add Character* button. You will do this
+of the main window, then press the *Add Character* button. You will do this
 every time you want to add a new character for tracking. To delete a
-character, make sure they are selected, then press the *X* button which is
-right of the *Add Character* button.
+character, make sure they are selected, then press the *X* button right
+of the *Add Character* button.
 
 If you have never attempted conversations with Kaour, Elsie, Dai, or Eirlys
 on your character, you will be able to use this tool immediately.
 
 If you have already attempted conversations with Kaour, Elsie, Dai,
 or Eirlys on your character, you will need to know your progression numbers
-or figure them out using a notepad and writing down your successful
-conversations with a trial-and-error method. An issue with using the
-trial-and-error method is that you might be thrown off by *special
-conversations*. Strike out any successful special conversations and leave
-an asterisk to indicate it is a wildcard. After you have done 3 to 5
-successful conversations, you can view the chart for that squire and look
-through the list to see where your sequence of successful conversations
-accurately fits the list. Unless you have been using another tracking tool,
-it is unlikely that you have gotten far from &#35;1. Your position is
-immediately after the matching sequence. You can enter your number into a
-text box in the *View Chart* button window for that squire.
+or figure them out using a notepad and writing down three or four successful
+conversation keywords with a trial-and-error method. Use Shuan's information
+to help you get the first conversation correct each in-game day. Strike out
+any successful special conversations and leave an asterisk to indicate they
+are wildcards. After you have done several successful conversations, you can
+view the chart for that squire and look through the list to see where your
+sequence of successful conversations accurately fits the list. Unless you
+have been using another tracking tool, it is unlikely that you have gotten
+far from &#35;1. Your position is immediately after the matching sequence.
+You can enter your number into a text box in the *View Chart* button window
+for that squire.
 
 ## Using The Tool
 
 Using the tool is simple, the keywords you will need to speak with each
-squire are listed to the right of their name and have the same color. Click
-on *Confirm Thrice* next to a squire's keywords to confirm that you've had
+squire are listed to the right of their name and have the same color. Press
+*Confirm Thrice* next to a squire's keywords to confirm that you've had
 three successful conversations with that squire. You will know a
-conversation is successful because the squire's likability will increase
-and a message will appear across the center of the game telling you it
-increased or that can not increase further. If you make a mistake and
-likability stays or decreases with a negative message appearing across
-the center of the game, you should click on the *Confirm Three* checkmark,
-which will turn the *Confirm Thrice* buttons into *Confirm Once*, then
-press *Confirm Once* for every successful conversation you did have.
+conversation is successful because the squire's likability will increase and
+a message will appear across the center of the game telling you it increased
+or that it can not increase further. If you make a mistake and likability
+stays or decreases with a negative message appearing across the center of
+the game, you should toggle the *Confirm Three* checkmark, which will turn
+the *Confirm Thrice* buttons into *Confirm Once*, then press *Confirm Once*
+for every successful conversation you did have.
 
-Conversation keywords are blacked out once they're done. This helps you
-know who you've talked to on this in-game day. Once the new day has turned
-over (6 AM in-game time), you can press the *Reset Day* button to get new
-keywords. When you close Mabinogi Squire Multi Tracker, it will save your
-information to a plain text file, *configuration.txt*.
+Conversation keywords are blacked out once they're done. This helps you know
+who you've talked to on this in-game day. Once the new day has turned over
+(6 AM in game time), you can use the *Reset Day* button to get new keywords.
+When you close Mabinogi Squire Multi Tracker, it will save your information
+to a plain text file, *configuration.txt*.
 
 *Special conversations* are conversation keywords that must be used when the
 squire is at or just above the listed likability level and percentage before
@@ -83,8 +83,7 @@ you can proceed beyond that likability. Special conversation keywords will
 take the place of a regular conversation keyword. If you progress through
 a special conversation while doing your three conversations, you will still
 need to confirm the number of successful conversations you had with that
-squire then additionally press *Confirm* under the special conversation
-label.
+squire, then press *Confirm* under the special conversation label.
 
 **_Special conversations_ at likability level 3 and above are only required
 if the squire is a member of your team. Once they are on your team, you will
@@ -115,7 +114,7 @@ Tracker, you could use an easier online tool for beginners at
 
 http://mabinogi.tsundere.fr/squires/
 
-At the top-right of that site, you can click the question mark button for a
+At the top-right of that site, you can use the question mark button for a
 full explanation with screenshots of how to find out your progress numbers.
 
 ## License
