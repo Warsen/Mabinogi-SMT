@@ -428,7 +428,7 @@ namespace MSMT
 			}
 		}
 
-		private List<Character> _listOfCharacters;
+		private readonly List<Character> _listOfCharacters;
 		private Character _selectedCharacter;
 		private bool _alwaysOnTop;
 		private bool _confirmThree;
