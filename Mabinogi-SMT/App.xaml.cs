@@ -82,7 +82,7 @@ namespace MSMT
 
 		private void MainWindow_Closing(object sender, CancelEventArgs e)
 		{
-			if (_savedLeft != _mainWindow.Left || _savedLeft != _mainWindow.Left)
+			if (_savedLeft != _mainWindow.Left || _savedTop != _mainWindow.Top)
 			{
 				_hasPropertyChanged = true;
 				_savedLeft = _mainWindow.Left;

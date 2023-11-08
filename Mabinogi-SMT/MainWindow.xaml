@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MSMT"
         mc:Ignorable="d"
-        Title="Mabinogi Squire Multi Tracker" Foreground="White" Background="DimGray" ResizeMode="CanMinimize" Height="320" Width="460"
-		WindowStartupLocation="Manual" Topmost="{Binding AlwaysOnTop}" StateChanged="Window_StateChanged">
+        Title="Mabinogi Squire Multi Tracker" Foreground="White" Background="DimGray" ResizeMode="CanMinimize"
+		WindowStartupLocation="Manual" Topmost="{Binding AlwaysOnTop}" StateChanged="Window_StateChanged" SizeToContent="WidthAndHeight" UseLayoutRounding="True">
 	<Window.Resources>
 		<Style TargetType="{x:Type CheckBox}">
 			<Setter Property="Foreground" Value="White"/>

@@ -23,9 +23,7 @@ namespace MSMT
 				Keyword.Missions, Keyword.Fashion, Keyword.Cooking, Keyword.Cooking, Keyword.Training, Keyword.Fashion,
 				Keyword.Cooking, Keyword.Dating, Keyword.Missions, Keyword.Fashion, Keyword.Dating, Keyword.Cooking,
 				Keyword.Dating, Keyword.Fashion, Keyword.Dating, Keyword.Training, Keyword.Missions, Keyword.Cooking,
-				Keyword.Training,
-				Keyword.Unknown, // DATING!
-				Keyword.Unknown, // Not Missions, Not Training
+				Keyword.Training, Keyword.Dating, Keyword.Fashion,
 			}),
 			// Elsie
 			new ReadOnlyCollection<Keyword>(new[] {
@@ -65,9 +63,7 @@ namespace MSMT
 				Keyword.Fashion, Keyword.Playing, Keyword.Missions, Keyword.Dating, Keyword.Training, Keyword.Dating,
 				Keyword.Fashion, Keyword.Missions, Keyword.Fashion, Keyword.Dating, Keyword.Fashion, Keyword.Missions,
 				Keyword.Fashion, Keyword.Cooking, Keyword.Playing, Keyword.Fashion, Keyword.Cooking, Keyword.Dating,
-				Keyword.Fashion,
-				Keyword.Unknown, // Not Missions, Not Training, Not Fashion, Not Playing
-				Keyword.Unknown,
+				Keyword.Fashion, Keyword.Dating, Keyword.Fashion,
 			}),
 			// Eirlys
 			new ReadOnlyCollection<Keyword>(new[] {
@@ -87,7 +83,7 @@ namespace MSMT
 				Keyword.Training, Keyword.Fashion, Keyword.Missions, Keyword.Training, Keyword.Cooking, Keyword.Missions,
 				Keyword.Fashion, Keyword.Playing, Keyword.Training, Keyword.Training, Keyword.Cooking, Keyword.Cooking,
 				Keyword.Missions, Keyword.Training, Keyword.Cooking, Keyword.Missions, Keyword.Missions, Keyword.Dating,
-				Keyword.Cooking, Keyword.Cooking, Keyword.Missions, // Double Checked
+				Keyword.Cooking, Keyword.Cooking, Keyword.Missions,
 			}),
 		};
 
