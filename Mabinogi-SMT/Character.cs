@@ -1,12 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace MSMT
+namespace MabinogiSMT
 {
 	public class Character
 	{
-		public static ReadOnlyCollection<Keyword>[] SquireSequenceTable = new ReadOnlyCollection<Keyword>[] {
+		public static readonly ReadOnlyCollection<Keyword>[] SquireSequenceTable = [
 			// Kaour
-			new ReadOnlyCollection<Keyword>(new[] {
+			new ReadOnlyCollection<Keyword>([
 				Keyword.Playing, Keyword.Playing, Keyword.Training, Keyword.Cooking, Keyword.Playing, Keyword.Dating,
 				Keyword.Training, Keyword.Cooking, Keyword.Dating, Keyword.Cooking, Keyword.Missions, Keyword.Missions,
 				Keyword.Fashion, Keyword.Dating, Keyword.Cooking, Keyword.Fashion, Keyword.Dating, Keyword.Missions,
@@ -24,9 +24,9 @@ namespace MSMT
 				Keyword.Cooking, Keyword.Dating, Keyword.Missions, Keyword.Fashion, Keyword.Dating, Keyword.Cooking,
 				Keyword.Dating, Keyword.Fashion, Keyword.Dating, Keyword.Training, Keyword.Missions, Keyword.Cooking,
 				Keyword.Training, Keyword.Dating, Keyword.Fashion,
-			}),
+			]),
 			// Elsie
-			new ReadOnlyCollection<Keyword>(new[] {
+			new ReadOnlyCollection<Keyword>([
 				Keyword.Cooking, Keyword.Playing, Keyword.Fashion, Keyword.Dating, Keyword.Fashion, Keyword.Playing,
 				Keyword.Dating, Keyword.Dating, Keyword.Playing, Keyword.Missions, Keyword.Training, Keyword.Playing,
 				Keyword.Dating, Keyword.Playing, Keyword.Training, Keyword.Playing, Keyword.Missions, Keyword.Cooking,
@@ -44,9 +44,9 @@ namespace MSMT
 				Keyword.Playing, Keyword.Fashion, Keyword.Dating, Keyword.Missions, Keyword.Missions, Keyword.Fashion,
 				Keyword.Fashion, Keyword.Fashion, Keyword.Fashion, Keyword.Dating, Keyword.Playing, Keyword.Playing,
 				Keyword.Missions, Keyword.Cooking, Keyword.Missions,
-			}),
+			]),
 			// Dai
-			new ReadOnlyCollection<Keyword>(new[] {
+			new ReadOnlyCollection<Keyword>([
 				Keyword.Playing, Keyword.Dating, Keyword.Playing, Keyword.Fashion, Keyword.Training, Keyword.Playing,
 				Keyword.Playing, Keyword.Playing, Keyword.Playing, Keyword.Cooking, Keyword.Playing, Keyword.Training,
 				Keyword.Playing, Keyword.Dating, Keyword.Missions, Keyword.Dating, Keyword.Fashion, Keyword.Playing,
@@ -64,9 +64,9 @@ namespace MSMT
 				Keyword.Fashion, Keyword.Missions, Keyword.Fashion, Keyword.Dating, Keyword.Fashion, Keyword.Missions,
 				Keyword.Fashion, Keyword.Cooking, Keyword.Playing, Keyword.Fashion, Keyword.Cooking, Keyword.Dating,
 				Keyword.Fashion, Keyword.Dating, Keyword.Fashion,
-			}),
+			]),
 			// Eirlys
-			new ReadOnlyCollection<Keyword>(new[] {
+			new ReadOnlyCollection<Keyword>([
 				Keyword.Missions, Keyword.Playing, Keyword.Cooking, Keyword.Playing, Keyword.Missions, Keyword.Training,
 				Keyword.Missions, Keyword.Missions, Keyword.Training, Keyword.Missions, Keyword.Training, Keyword.Fashion,
 				Keyword.Training, Keyword.Training, Keyword.Cooking, Keyword.Dating, Keyword.Training, Keyword.Fashion,
@@ -84,12 +84,12 @@ namespace MSMT
 				Keyword.Fashion, Keyword.Playing, Keyword.Training, Keyword.Training, Keyword.Cooking, Keyword.Cooking,
 				Keyword.Missions, Keyword.Training, Keyword.Cooking, Keyword.Missions, Keyword.Missions, Keyword.Dating,
 				Keyword.Cooking, Keyword.Cooking, Keyword.Missions,
-			}),
-		};
+			]),
+		];
 
-		public static ReadOnlyCollection<string>[] SquireSpecialSequenceTable = new ReadOnlyCollection<string>[] {
+		public static readonly ReadOnlyCollection<string>[] SquireSpecialSequenceTable = [
 			// Kaour
-			new ReadOnlyCollection<string>(new[] {
+			new ReadOnlyCollection<string>([
 				"Lv.2 0.7% Training",
 				"Lv.2 53.3% Playing",
 				"Lv.2 90.0% Missions",
@@ -100,9 +100,9 @@ namespace MSMT
 				"Lv.4 56.7% Training",
 				"Lv.4 93.3% Playing",
 				"",
-			}),
+			]),
 			// Elsie
-			new ReadOnlyCollection<string>(new[] {
+			new ReadOnlyCollection<string>([
 				"Lv.2 0.7% Training",
 				"Lv.2 46.7% Playing",
 				"Lv.2 83.3% Cooking",
@@ -113,9 +113,9 @@ namespace MSMT
 				"Lv.4 50.0% Playing",
 				"Lv.4 85.0% Cooking",
 				"",
-			}),
+			]),
 			// Dai
-			new ReadOnlyCollection<string>(new[] {
+			new ReadOnlyCollection<string>([
 				"Lv.2 2.0% Playing",
 				"Lv.2 33.3% Fashion",
 				"Lv.2 80.0% Dating",
@@ -126,9 +126,9 @@ namespace MSMT
 				"Lv.4 45.0% Fashion",
 				"Lv.4 80.0% Dating",
 				"",
-			}),
+			]),
 			// Eirlys
-			new ReadOnlyCollection<string>(new[] {
+			new ReadOnlyCollection<string>([
 				"Lv.1 2.9% Training",
 				"Lv.1 28.6% Dating",
 				"Lv.1 71.4% Training",
@@ -142,8 +142,8 @@ namespace MSMT
 				"Lv.4 40.0% Cooking",
 				"Lv.4 80.0% Training",
 				"",
-			}),
-		};
+			]),
+		];
 
 		public string Name { get; set; }
 		public byte KaourSequence { get; set; }

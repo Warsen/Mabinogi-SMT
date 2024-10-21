@@ -1,4 +1,4 @@
-﻿namespace MSMT
+﻿namespace MabinogiSMT
 {
 	public enum Keyword : byte
 	{

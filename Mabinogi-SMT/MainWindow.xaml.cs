@@ -1,45 +1,43 @@
-﻿using System;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace MSMT
+namespace MabinogiSMT
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public UserConfiguration UserConfiguration
-		{
-			get
-			{
-				return _userConfiguration;
-			}
-			set
-			{
-				_viewChartWindow.UserConfiguration = value;
-				_userConfiguration = value;
-				KaourSpecialConfirmButton.IsEnabled = (_userConfiguration.KaourSpecialSequence < Character.SquireSpecialSequenceTable[(int)Squire.Kaour].Count - 1);
-				ElsieSpecialConfirmButton.IsEnabled = (_userConfiguration.ElsieSpecialSequence < Character.SquireSpecialSequenceTable[(int)Squire.Elsie].Count - 1);
-				DaiSpecialConfirmButton.IsEnabled = (_userConfiguration.DaiSpecialSequence < Character.SquireSpecialSequenceTable[(int)Squire.Dai].Count - 1);
-				EirlysSpecialConfirmButton.IsEnabled = (_userConfiguration.EirlysSpecialSequence < Character.SquireSpecialSequenceTable[(int)Squire.Eirlys].Count - 1);
-			}
-		}
-
-		private ViewChartWindow _viewChartWindow;
-		private UserConfiguration _userConfiguration;
+		private UserConfiguration _userConfiguration = null!;
+		private ViewChartWindow _viewChartWindow = null!;
 
 		public MainWindow()
 		{
 			InitializeComponent();
 
-			_viewChartWindow = new ViewChartWindow
+			Loaded += OnLoaded;
+			StateChanged += OnStateChanged;
+		}
+
+		private void OnLoaded(object sender, RoutedEventArgs e)
+		{
+			_userConfiguration = DataContext as UserConfiguration ?? throw new InvalidOperationException("DataContext must be of type UserConfiguration.");
+			_viewChartWindow = new ViewChartWindow()
 			{
-				Owner = Owner
+				DataContext = DataContext,
+				Owner = Owner,
 			};
 		}
 
-		private void Window_StateChanged(object sender, EventArgs e)
+		private void OnStateChanged(object? sender, EventArgs e)
 		{
 			switch (WindowState)
 			{
@@ -74,9 +72,9 @@ namespace MSMT
 
 		private void AddCharacterButton_Click(object sender, RoutedEventArgs e)
 		{
-			if (!String.IsNullOrWhiteSpace(CharacterComboBox.Text) && !String.Equals(CharacterComboBox.Text, _userConfiguration.SelectedCharacter.Name, StringComparison.OrdinalIgnoreCase))
+			if (!string.IsNullOrWhiteSpace(CharacterComboBox.Text) && !string.Equals(CharacterComboBox.Text, _userConfiguration.SelectedCharacter.Name, StringComparison.OrdinalIgnoreCase))
 			{
-				if (String.IsNullOrWhiteSpace(_userConfiguration.SelectedCharacter.Name))
+				if (string.IsNullOrWhiteSpace(_userConfiguration.SelectedCharacter.Name))
 					_userConfiguration.NewCopyCharacter(CharacterComboBox.Text, _userConfiguration.SelectedCharacter);
 				else
 					_userConfiguration.NewCharacter(CharacterComboBox.Text);
@@ -85,7 +83,7 @@ namespace MSMT
 
 		private void RemoveCharacterButton_Click(object sender, RoutedEventArgs e)
 		{
-			if (String.Equals(CharacterComboBox.Text, _userConfiguration.SelectedCharacter.Name, StringComparison.OrdinalIgnoreCase) && _userConfiguration.ListOfCharacters.Count > 1)
+			if (string.Equals(CharacterComboBox.Text, _userConfiguration.SelectedCharacter.Name, StringComparison.OrdinalIgnoreCase) && _userConfiguration.ListOfCharacters.Count > 1)
 				_userConfiguration.RemoveCharacter();
 		}
 
@@ -122,7 +120,7 @@ namespace MSMT
 		{
 			if (_userConfiguration.KaourSequenceBuffer == 0)
 			{
-				if (ConfirmThreeCheckBox.IsChecked.Value)
+				if (ConfirmThreeCheckBox.IsChecked.HasValue && ConfirmThreeCheckBox.IsChecked.Value)
 				{
 					if (_userConfiguration.UseBuffering)
 					{
@@ -141,7 +139,7 @@ namespace MSMT
 			}
 			else if (_userConfiguration.KaourSequenceBuffer == 1)
 			{
-				if (ConfirmThreeCheckBox.IsChecked.Value)
+				if (ConfirmThreeCheckBox.IsChecked.HasValue && ConfirmThreeCheckBox.IsChecked.Value)
 				{
 					KaourKeywordTextBlock2.Style = (Style)FindResource("KaourKeywordStyle2");
 					KaourKeywordTextBlock3.Style = (Style)FindResource("KaourKeywordStyle2");
@@ -183,7 +181,7 @@ namespace MSMT
 		{
 			if (_userConfiguration.ElsieSequenceBuffer == 0)
 			{
-				if (ConfirmThreeCheckBox.IsChecked.Value)
+				if (ConfirmThreeCheckBox.IsChecked.HasValue && ConfirmThreeCheckBox.IsChecked.Value)
 				{
 					if (_userConfiguration.UseBuffering)
 					{
@@ -202,7 +200,7 @@ namespace MSMT
 			}
 			else if (_userConfiguration.ElsieSequenceBuffer == 1)
 			{
-				if (ConfirmThreeCheckBox.IsChecked.Value)
+				if (ConfirmThreeCheckBox.IsChecked.HasValue && ConfirmThreeCheckBox.IsChecked.Value)
 				{
 					ElsieKeywordTextBlock2.Style = (Style)FindResource("ElsieKeywordStyle2");
 					ElsieKeywordTextBlock3.Style = (Style)FindResource("ElsieKeywordStyle2");
@@ -244,7 +242,7 @@ namespace MSMT
 		{
 			if (_userConfiguration.DaiSequenceBuffer == 0)
 			{
-				if (ConfirmThreeCheckBox.IsChecked.Value)
+				if (ConfirmThreeCheckBox.IsChecked.HasValue && ConfirmThreeCheckBox.IsChecked.Value)
 				{
 					if (_userConfiguration.UseBuffering)
 					{
@@ -263,7 +261,7 @@ namespace MSMT
 			}
 			else if (_userConfiguration.DaiSequenceBuffer == 1)
 			{
-				if (ConfirmThreeCheckBox.IsChecked.Value)
+				if (ConfirmThreeCheckBox.IsChecked.HasValue && ConfirmThreeCheckBox.IsChecked.Value)
 				{
 					DaiKeywordTextBlock2.Style = (Style)FindResource("DaiKeywordStyle2");
 					DaiKeywordTextBlock3.Style = (Style)FindResource("DaiKeywordStyle2");
@@ -305,7 +303,7 @@ namespace MSMT
 		{
 			if (_userConfiguration.EirlysSequenceBuffer == 0)
 			{
-				if (ConfirmThreeCheckBox.IsChecked.Value)
+				if (ConfirmThreeCheckBox.IsChecked.HasValue && ConfirmThreeCheckBox.IsChecked.Value)
 				{
 					if (_userConfiguration.UseBuffering)
 					{
@@ -324,7 +322,7 @@ namespace MSMT
 			}
 			else if (_userConfiguration.EirlysSequenceBuffer == 1)
 			{
-				if (ConfirmThreeCheckBox.IsChecked.Value)
+				if (ConfirmThreeCheckBox.IsChecked.HasValue && ConfirmThreeCheckBox.IsChecked.Value)
 				{
 					EirlysKeywordTextBlock2.Style = (Style)FindResource("EirlysKeywordStyle2");
 					EirlysKeywordTextBlock3.Style = (Style)FindResource("EirlysKeywordStyle2");

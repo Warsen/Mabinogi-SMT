@@ -5,10 +5,21 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-namespace MSMT
+namespace MabinogiSMT
 {
 	public class UserConfiguration : INotifyPropertyChanged
 	{
+		private readonly List<Character> _listOfCharacters = [];
+		private Character _selectedCharacter = new("");
+		private bool _alwaysOnTop = true;
+		private bool _confirmThree = true;
+		private bool _useBuffering = true;
+		private byte _kaourSequenceBuffer = 0;
+		private byte _elsieSequenceBuffer = 0;
+		private byte _daiSequenceBuffer = 0;
+		private byte _eirlysSequenceBuffer = 0;
+		private Squire _selectedSquire = Squire.Kaour;
+
 		public ReadOnlyCollection<Character> ListOfCharacters
 		{
 			get
@@ -30,44 +41,44 @@ namespace MSMT
 					{
 						_selectedCharacter.KaourSequence = (byte)((_selectedCharacter.KaourSequence + _kaourSequenceBuffer) % 97);
 						_kaourSequenceBuffer = 0;
-						OnPropertyChanged("KaourSequenceBuffer");
+						OnPropertyChanged(nameof(KaourSequenceBuffer));
 					}
 					if (_elsieSequenceBuffer > 0)
 					{
 						_selectedCharacter.ElsieSequence = (byte)((_selectedCharacter.ElsieSequence + _elsieSequenceBuffer) % 97);
 						_elsieSequenceBuffer = 0;
-						OnPropertyChanged("ElsieSequenceBuffer");
+						OnPropertyChanged(nameof(ElsieSequenceBuffer));
 					}
 					if (_daiSequenceBuffer > 0)
 					{
 						_selectedCharacter.DaiSequence = (byte)((_selectedCharacter.DaiSequence + _daiSequenceBuffer) % 97);
 						_daiSequenceBuffer = 0;
-						OnPropertyChanged("DaiSequenceBuffer");
+						OnPropertyChanged(nameof(DaiSequenceBuffer));
 					}
 					if (_eirlysSequenceBuffer > 0)
 					{
 						_selectedCharacter.EirlysSequence = (byte)((_selectedCharacter.EirlysSequence + _eirlysSequenceBuffer) % 97);
 						_eirlysSequenceBuffer = 0;
-						OnPropertyChanged("EirlysSequenceBuffer");
+						OnPropertyChanged(nameof(EirlysSequenceBuffer));
 					}
 					_selectedCharacter = value;
-					OnPropertyChanged("KaourKeyword1");
-					OnPropertyChanged("KaourKeyword2");
-					OnPropertyChanged("KaourKeyword3");
-					OnPropertyChanged("KaourSpecialKeyword");
-					OnPropertyChanged("ElsieKeyword1");
-					OnPropertyChanged("ElsieKeyword2");
-					OnPropertyChanged("ElsieKeyword3");
-					OnPropertyChanged("ElsieSpecialKeyword");
-					OnPropertyChanged("DaiKeyword1");
-					OnPropertyChanged("DaiKeyword2");
-					OnPropertyChanged("DaiKeyword3");
-					OnPropertyChanged("DaiSpecialKeyword");
-					OnPropertyChanged("EirlysKeyword1");
-					OnPropertyChanged("EirlysKeyword2");
-					OnPropertyChanged("EirlysKeyword3");
-					OnPropertyChanged("EirlysSpecialKeyword");
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(KaourKeyword1));
+					OnPropertyChanged(nameof(KaourKeyword2));
+					OnPropertyChanged(nameof(KaourKeyword3));
+					OnPropertyChanged(nameof(KaourSpecialKeyword));
+					OnPropertyChanged(nameof(ElsieKeyword1));
+					OnPropertyChanged(nameof(ElsieKeyword2));
+					OnPropertyChanged(nameof(ElsieKeyword3));
+					OnPropertyChanged(nameof(ElsieSpecialKeyword));
+					OnPropertyChanged(nameof(DaiKeyword1));
+					OnPropertyChanged(nameof(DaiKeyword2));
+					OnPropertyChanged(nameof(DaiKeyword3));
+					OnPropertyChanged(nameof(DaiSpecialKeyword));
+					OnPropertyChanged(nameof(EirlysKeyword1));
+					OnPropertyChanged(nameof(EirlysKeyword2));
+					OnPropertyChanged(nameof(EirlysKeyword3));
+					OnPropertyChanged(nameof(EirlysSpecialKeyword));
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 				}
 			}
 		}
@@ -119,12 +130,12 @@ namespace MSMT
 			{
 				_selectedCharacter.KaourSequence = (byte)(value % 97);
 				OnPropertyChanged();
-				OnPropertyChanged("KaourKeyword1");
-				OnPropertyChanged("KaourKeyword2");
-				OnPropertyChanged("KaourKeyword3");
+				OnPropertyChanged(nameof(KaourKeyword1));
+				OnPropertyChanged(nameof(KaourKeyword2));
+				OnPropertyChanged(nameof(KaourKeyword3));
 
 				if (_selectedSquire == Squire.Kaour)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public byte KaourSequenceBuffer
@@ -143,14 +154,14 @@ namespace MSMT
 				else
 				{
 					_selectedCharacter.KaourSequence = (byte)((_selectedCharacter.KaourSequence + value) % 97);
-					OnPropertyChanged("KaourSequence");
-					OnPropertyChanged("KaourKeyword1");
-					OnPropertyChanged("KaourKeyword2");
-					OnPropertyChanged("KaourKeyword3");
+					OnPropertyChanged(nameof(KaourSequence));
+					OnPropertyChanged(nameof(KaourKeyword1));
+					OnPropertyChanged(nameof(KaourKeyword2));
+					OnPropertyChanged(nameof(KaourKeyword3));
 				}
 
 				if (_selectedSquire == Squire.Kaour)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public byte KaourSpecialSequence
@@ -163,7 +174,7 @@ namespace MSMT
 			{
 				_selectedCharacter.KaourSpecialSequence = value;
 				OnPropertyChanged();
-				OnPropertyChanged("KaourSpecialKeyword");
+				OnPropertyChanged(nameof(KaourSpecialKeyword));
 			}
 		}
 		public string KaourKeyword1 { get { return Character.SquireSequenceTable[(int)Squire.Kaour][_selectedCharacter.KaourSequence].ToString(); } }
@@ -180,12 +191,12 @@ namespace MSMT
 			{
 				_selectedCharacter.ElsieSequence = (byte)(value % 97);
 				OnPropertyChanged();
-				OnPropertyChanged("ElsieKeyword1");
-				OnPropertyChanged("ElsieKeyword2");
-				OnPropertyChanged("ElsieKeyword3");
+				OnPropertyChanged(nameof(ElsieKeyword1));
+				OnPropertyChanged(nameof(ElsieKeyword2));
+				OnPropertyChanged(nameof(ElsieKeyword3));
 
 				if (_selectedSquire == Squire.Elsie)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public byte ElsieSequenceBuffer
@@ -204,14 +215,14 @@ namespace MSMT
 				else
 				{
 					_selectedCharacter.ElsieSequence = (byte)((_selectedCharacter.ElsieSequence + value) % 97);
-					OnPropertyChanged("ElsieSequence");
-					OnPropertyChanged("ElsieKeyword1");
-					OnPropertyChanged("ElsieKeyword2");
-					OnPropertyChanged("ElsieKeyword3");
+					OnPropertyChanged(nameof(ElsieSequence));
+					OnPropertyChanged(nameof(ElsieKeyword1));
+					OnPropertyChanged(nameof(ElsieKeyword2));
+					OnPropertyChanged(nameof(ElsieKeyword3));
 				}
 
 				if (_selectedSquire == Squire.Elsie)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public byte ElsieSpecialSequence
@@ -224,7 +235,7 @@ namespace MSMT
 			{
 				_selectedCharacter.ElsieSpecialSequence = value;
 				OnPropertyChanged();
-				OnPropertyChanged("ElsieSpecialKeyword");
+				OnPropertyChanged(nameof(ElsieSpecialKeyword));
 			}
 		}
 		public string ElsieKeyword1 { get { return Character.SquireSequenceTable[(int)Squire.Elsie][_selectedCharacter.ElsieSequence].ToString(); } }
@@ -241,12 +252,12 @@ namespace MSMT
 			{
 				_selectedCharacter.DaiSequence = (byte)(value % 97);
 				OnPropertyChanged();
-				OnPropertyChanged("DaiKeyword1");
-				OnPropertyChanged("DaiKeyword2");
-				OnPropertyChanged("DaiKeyword3");
+				OnPropertyChanged(nameof(DaiKeyword1));
+				OnPropertyChanged(nameof(DaiKeyword2));
+				OnPropertyChanged(nameof(DaiKeyword3));
 
 				if (_selectedSquire == Squire.Dai)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public byte DaiSequenceBuffer
@@ -265,14 +276,14 @@ namespace MSMT
 				else
 				{
 					_selectedCharacter.DaiSequence = (byte)((_selectedCharacter.DaiSequence + value) % 97);
-					OnPropertyChanged("DaiSequence");
-					OnPropertyChanged("DaiKeyword1");
-					OnPropertyChanged("DaiKeyword2");
-					OnPropertyChanged("DaiKeyword3");
+					OnPropertyChanged(nameof(DaiSequence));
+					OnPropertyChanged(nameof(DaiKeyword1));
+					OnPropertyChanged(nameof(DaiKeyword2));
+					OnPropertyChanged(nameof(DaiKeyword3));
 				}
 
 				if (_selectedSquire == Squire.Dai)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public byte DaiSpecialSequence
@@ -285,7 +296,7 @@ namespace MSMT
 			{
 				_selectedCharacter.DaiSpecialSequence = value;
 				OnPropertyChanged();
-				OnPropertyChanged("DaiSpecialKeyword");
+				OnPropertyChanged(nameof(DaiSpecialKeyword));
 			}
 		}
 		public string DaiKeyword1 { get { return Character.SquireSequenceTable[(int)Squire.Dai][_selectedCharacter.DaiSequence].ToString(); } }
@@ -302,12 +313,12 @@ namespace MSMT
 			{
 				_selectedCharacter.EirlysSequence = (byte)(value % 97);
 				OnPropertyChanged();
-				OnPropertyChanged("EirlysKeyword1");
-				OnPropertyChanged("EirlysKeyword2");
-				OnPropertyChanged("EirlysKeyword3");
+				OnPropertyChanged(nameof(EirlysKeyword1));
+				OnPropertyChanged(nameof(EirlysKeyword2));
+				OnPropertyChanged(nameof(EirlysKeyword3));
 
 				if (_selectedSquire == Squire.Eirlys)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public byte EirlysSequenceBuffer
@@ -326,14 +337,14 @@ namespace MSMT
 				else
 				{
 					_selectedCharacter.EirlysSequence = (byte)((_selectedCharacter.EirlysSequence + value) % 97);
-					OnPropertyChanged("EirlysSequence");
-					OnPropertyChanged("EirlysKeyword1");
-					OnPropertyChanged("EirlysKeyword2");
-					OnPropertyChanged("EirlysKeyword3");
+					OnPropertyChanged(nameof(EirlysSequence));
+					OnPropertyChanged(nameof(EirlysKeyword1));
+					OnPropertyChanged(nameof(EirlysKeyword2));
+					OnPropertyChanged(nameof(EirlysKeyword3));
 				}
 
 				if (_selectedSquire == Squire.Eirlys)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public byte EirlysSpecialSequence
@@ -346,7 +357,7 @@ namespace MSMT
 			{
 				_selectedCharacter.EirlysSpecialSequence = value;
 				OnPropertyChanged();
-				OnPropertyChanged("EirlysSpecialKeyword");
+				OnPropertyChanged(nameof(EirlysSpecialKeyword));
 			}
 		}
 		public string EirlysKeyword1 { get { return Character.SquireSequenceTable[(int)Squire.Eirlys][_selectedCharacter.EirlysSequence].ToString(); } }
@@ -363,8 +374,8 @@ namespace MSMT
 			{
 				_selectedSquire = value;
 				OnPropertyChanged();
-				OnPropertyChanged("SelectedSquireKeywords");
-				OnPropertyChanged("SelectedCharacterSquireSequence");
+				OnPropertyChanged(nameof(SelectedSquireKeywords));
+				OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 		public ReadOnlyCollection<Keyword> SelectedSquireKeywords
@@ -378,17 +389,13 @@ namespace MSMT
 		{
 			get
 			{
-				switch (_selectedSquire)
+				return _selectedSquire switch
 				{
-					case Squire.Kaour: default:
-						return (byte)(_selectedCharacter.KaourSequence + _kaourSequenceBuffer + 1);
-					case Squire.Elsie:
-						return (byte)(_selectedCharacter.ElsieSequence + _elsieSequenceBuffer + 1);
-					case Squire.Dai:
-						return (byte)(_selectedCharacter.DaiSequence + _daiSequenceBuffer + 1);
-					case Squire.Eirlys:
-						return (byte)(_selectedCharacter.EirlysSequence + _eirlysSequenceBuffer + 1);
-				}
+					Squire.Kaour => (byte)(_selectedCharacter.KaourSequence + _kaourSequenceBuffer + 1),
+					Squire.Elsie => (byte)(_selectedCharacter.ElsieSequence + _elsieSequenceBuffer + 1),
+					Squire.Dai => (byte)(_selectedCharacter.DaiSequence + _daiSequenceBuffer + 1),
+					_ => (byte)(_selectedCharacter.EirlysSequence + _eirlysSequenceBuffer + 1),
+				};
 			}
 			set
 			{
@@ -397,89 +404,62 @@ namespace MSMT
 				{
 					case Squire.Kaour: default:
 						_selectedCharacter.KaourSequence = (byte)(value - 1);
-						OnPropertyChanged("KaourSequence");
-						OnPropertyChanged("KaourKeyword1");
-						OnPropertyChanged("KaourKeyword2");
-						OnPropertyChanged("KaourKeyword3");
+						OnPropertyChanged(nameof(KaourSequence));
+						OnPropertyChanged(nameof(KaourKeyword1));
+						OnPropertyChanged(nameof(KaourKeyword2));
+						OnPropertyChanged(nameof(KaourKeyword3));
 						break;
 					case Squire.Elsie:
 						_selectedCharacter.ElsieSequence = (byte)(value - 1);
-						OnPropertyChanged("ElsieSequence");
-						OnPropertyChanged("ElsieKeyword1");
-						OnPropertyChanged("ElsieKeyword2");
-						OnPropertyChanged("ElsieKeyword3");
+						OnPropertyChanged(nameof(ElsieSequence));
+						OnPropertyChanged(nameof(ElsieKeyword1));
+						OnPropertyChanged(nameof(ElsieKeyword2));
+						OnPropertyChanged(nameof(ElsieKeyword3));
 						break;
 					case Squire.Dai:
 						_selectedCharacter.DaiSequence = (byte)(value - 1);
-						OnPropertyChanged("DaiSequence");
-						OnPropertyChanged("DaiKeyword1");
-						OnPropertyChanged("DaiKeyword2");
-						OnPropertyChanged("DaiKeyword3");
+						OnPropertyChanged(nameof(DaiSequence));
+						OnPropertyChanged(nameof(DaiKeyword1));
+						OnPropertyChanged(nameof(DaiKeyword2));
+						OnPropertyChanged(nameof(DaiKeyword3));
 						break;
 					case Squire.Eirlys:
 						_selectedCharacter.EirlysSequence = (byte)(value - 1);
-						OnPropertyChanged("EirlysSequence");
-						OnPropertyChanged("EirlysKeyword1");
-						OnPropertyChanged("EirlysKeyword2");
-						OnPropertyChanged("EirlysKeyword3");
+						OnPropertyChanged(nameof(EirlysSequence));
+						OnPropertyChanged(nameof(EirlysKeyword1));
+						OnPropertyChanged(nameof(EirlysKeyword2));
+						OnPropertyChanged(nameof(EirlysKeyword3));
 						break;
 				}
 				OnPropertyChanged();
 			}
 		}
 
-		private readonly List<Character> _listOfCharacters;
-		private Character _selectedCharacter;
-		private bool _alwaysOnTop;
-		private bool _confirmThree;
-		private bool _useBuffering;
-		private byte _kaourSequenceBuffer;
-		private byte _elsieSequenceBuffer;
-		private byte _daiSequenceBuffer;
-		private byte _eirlysSequenceBuffer;
-		private Squire _selectedSquire;
-
-		public UserConfiguration()
-		{
-			_listOfCharacters = new List<Character>();
-			_selectedCharacter = new Character("");
-			_alwaysOnTop = true;
-			_confirmThree = true;
-			_useBuffering = true;
-			_kaourSequenceBuffer = 0;
-			_elsieSequenceBuffer = 0;
-			_daiSequenceBuffer = 0;
-			_eirlysSequenceBuffer = 0;
-			_selectedSquire = Squire.Kaour;
-		}
-
 		public void NewCharacter(string name)
 		{
-			if (name == null)
-				throw new ArgumentNullException();
-			if (String.IsNullOrWhiteSpace(name))
-				throw new ArgumentException();
+			ArgumentNullException.ThrowIfNull(name, nameof(name));
+			if (string.IsNullOrWhiteSpace(name))
+				throw new ArgumentException("Character name cannot be null or whitespace.", nameof(name));
 
 			if (!_listOfCharacters.Exists((x) => x.Name == name))
 			{
 				SelectedCharacter = new Character(name);
 				_listOfCharacters.Add(_selectedCharacter);
-				OnPropertyChanged("ListOfCharacters");
+				OnPropertyChanged(nameof(ListOfCharacters));
 			}
 		}
 
 		public void NewCopyCharacter(string name, Character copyFromCharacter)
 		{
-			if (name == null)
-				throw new ArgumentNullException();
-			if (String.IsNullOrWhiteSpace(name))
-				throw new ArgumentException();
+			ArgumentNullException.ThrowIfNull(name, nameof(name));
+			if (string.IsNullOrWhiteSpace(name))
+				throw new ArgumentException("Character name cannot be null or whitespace.", nameof(name));
 
 			if (!_listOfCharacters.Exists((x) => x.Name == name))
 			{
 				SelectedCharacter = new Character(name, copyFromCharacter);
 				_listOfCharacters.Add(_selectedCharacter);
-				OnPropertyChanged("ListOfCharacters");
+				OnPropertyChanged(nameof(ListOfCharacters));
 			}
 		}
 
@@ -489,7 +469,7 @@ namespace MSMT
 			{
 				_listOfCharacters.Remove(_selectedCharacter);
 				SelectedCharacter = _listOfCharacters[0];
-				OnPropertyChanged("ListOfCharacters");
+				OnPropertyChanged(nameof(ListOfCharacters));
 			}
 		}
 
@@ -499,45 +479,45 @@ namespace MSMT
 			{
 				_selectedCharacter.KaourSequence = (byte)((_selectedCharacter.KaourSequence + _kaourSequenceBuffer) % 97);
 				_kaourSequenceBuffer = 0;
-				OnPropertyChanged("KaourSequenceBuffer");
-				OnPropertyChanged("KaourKeyword1");
-				OnPropertyChanged("KaourKeyword2");
-				OnPropertyChanged("KaourKeyword3");
+				OnPropertyChanged(nameof(KaourSequenceBuffer));
+				OnPropertyChanged(nameof(KaourKeyword1));
+				OnPropertyChanged(nameof(KaourKeyword2));
+				OnPropertyChanged(nameof(KaourKeyword3));
 				if (_selectedSquire == Squire.Kaour)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 			if (_elsieSequenceBuffer > 0)
 			{
 				_selectedCharacter.ElsieSequence = (byte)((_selectedCharacter.ElsieSequence + _elsieSequenceBuffer) % 97);
 				_elsieSequenceBuffer = 0;
-				OnPropertyChanged("ElsieSequenceBuffer");
-				OnPropertyChanged("ElsieKeyword1");
-				OnPropertyChanged("ElsieKeyword2");
-				OnPropertyChanged("ElsieKeyword3");
+				OnPropertyChanged(nameof(ElsieSequenceBuffer));
+				OnPropertyChanged(nameof(ElsieKeyword1));
+				OnPropertyChanged(nameof(ElsieKeyword2));
+				OnPropertyChanged(nameof(ElsieKeyword3));
 				if (_selectedSquire == Squire.Elsie)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 			if (_daiSequenceBuffer > 0)
 			{
 				_selectedCharacter.DaiSequence = (byte)((_selectedCharacter.DaiSequence + _daiSequenceBuffer) % 97);
 				_daiSequenceBuffer = 0;
-				OnPropertyChanged("DaiSequenceBuffer");
-				OnPropertyChanged("DaiKeyword1");
-				OnPropertyChanged("DaiKeyword2");
-				OnPropertyChanged("DaiKeyword3");
+				OnPropertyChanged(nameof(DaiSequenceBuffer));
+				OnPropertyChanged(nameof(DaiKeyword1));
+				OnPropertyChanged(nameof(DaiKeyword2));
+				OnPropertyChanged(nameof(DaiKeyword3));
 				if (_selectedSquire == Squire.Dai)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 			if (_eirlysSequenceBuffer > 0)
 			{
 				_selectedCharacter.EirlysSequence = (byte)((_selectedCharacter.EirlysSequence + _eirlysSequenceBuffer) % 97);
 				_eirlysSequenceBuffer = 0;
-				OnPropertyChanged("EirlysSequenceBuffer");
-				OnPropertyChanged("EirlysKeyword1");
-				OnPropertyChanged("EirlysKeyword2");
-				OnPropertyChanged("EirlysKeyword3");
+				OnPropertyChanged(nameof(EirlysSequenceBuffer));
+				OnPropertyChanged(nameof(EirlysKeyword1));
+				OnPropertyChanged(nameof(EirlysKeyword2));
+				OnPropertyChanged(nameof(EirlysKeyword3));
 				if (_selectedSquire == Squire.Eirlys)
-					OnPropertyChanged("SelectedCharacterSquireSequence");
+					OnPropertyChanged(nameof(SelectedCharacterSquireSequence));
 			}
 		}
 
@@ -580,41 +560,44 @@ namespace MSMT
 
 		public void LoadConfiguration(StreamReader reader)
 		{
-			string line = reader.ReadLine();
-			string[] words = line.Split(',');
-			int lastSelection = Int32.Parse(words[0]);
-			_alwaysOnTop = Boolean.Parse(words[1]);
-			_confirmThree = Boolean.Parse(words[2]);
-			_useBuffering = Boolean.Parse(words[3]);
-
-			line = reader.ReadLine();
-			while (!String.IsNullOrEmpty(line))
+			string? line = reader.ReadLine();
+			if (line != null)
 			{
-				words = line.Split(',');
-
-				Character character = new Character(words[0])
-				{
-					KaourSequence = Byte.Parse(words[1]),
-					KaourSpecialSequence = Byte.Parse(words[2]),
-					ElsieSequence = Byte.Parse(words[3]),
-					ElsieSpecialSequence = Byte.Parse(words[4]),
-					DaiSequence = Byte.Parse(words[5]),
-					DaiSpecialSequence = Byte.Parse(words[6]),
-					EirlysSequence = Byte.Parse(words[7]),
-					EirlysSpecialSequence = Byte.Parse(words[8])
-				};
-				_listOfCharacters.Add(character);
+				string[] words = line.Split(',');
+				int lastSelection = int.Parse(words[0]);
+				_alwaysOnTop = bool.Parse(words[1]);
+				_confirmThree = bool.Parse(words[2]);
+				_useBuffering = bool.Parse(words[3]);
 
 				line = reader.ReadLine();
-			}
+				while (!string.IsNullOrEmpty(line))
+				{
+					words = line.Split(',');
 
-			if (_listOfCharacters.Count > 0)
-				_selectedCharacter = _listOfCharacters[lastSelection];
+					Character character = new(words[0])
+					{
+						KaourSequence = byte.Parse(words[1]),
+						KaourSpecialSequence = byte.Parse(words[2]),
+						ElsieSequence = byte.Parse(words[3]),
+						ElsieSpecialSequence = byte.Parse(words[4]),
+						DaiSequence = byte.Parse(words[5]),
+						DaiSpecialSequence = byte.Parse(words[6]),
+						EirlysSequence = byte.Parse(words[7]),
+						EirlysSpecialSequence = byte.Parse(words[8])
+					};
+					_listOfCharacters.Add(character);
+
+					line = reader.ReadLine();
+				}
+
+				if (_listOfCharacters.Count > 0)
+					_selectedCharacter = _listOfCharacters[lastSelection];
+			}
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged;
+		public event PropertyChangedEventHandler? PropertyChanged;
 
-		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
